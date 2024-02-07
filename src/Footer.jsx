@@ -1,7 +1,7 @@
 import styles from "./Footer.module.css"
 
 
-const Footer = () => {
+export const Footer = () => {
 
   return (
     <div>
