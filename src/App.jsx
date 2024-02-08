@@ -1,11 +1,12 @@
 import Navbar from "./components/layouts/Navbar"
+import ItemListContainer from "./components/pages/ItemListContainer"
 
 const App = () => {
 
   return (
     <div>
       <Navbar/>
-      <h1>Este es el titulo</h1>
+      <ItemListContainer greeting="¡Bienvenido a Bookpolis, nuestra tienda en línea!" />
 
     </div>
   )
