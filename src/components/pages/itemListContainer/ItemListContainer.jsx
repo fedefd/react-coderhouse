@@ -1,28 +1,24 @@
-import React from 'react';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 
-const ItemListContainer = ({ greeting }) => {
+import ItemList from './ItemList';
+
+const ItemListContainer = ({greeting}) => {
 
   // peticion a la api
   // useState
   // funciones
   // variables
 
+let nombre = "fd"
+const saludar = ()=> {
+  console.log('hola pp')
+}
 
 
 
 
 
 
-
-  return (
-    <Box sx={{ textAlign: 'center', mt: 4 }}>
-      <Typography variant="h4" component="h2" gutterBottom>
-        {greeting}
-      </Typography>
-    </Box>
-  );
+  return <ItemList greeting={greeting} nombre={nombre} saludar={saludar} />
 };
 
 export default ItemListContainer;
