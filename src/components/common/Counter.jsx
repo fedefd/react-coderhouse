@@ -1,18 +1,20 @@
-import { useState } from "react"
+import { useState } from "react";
 
-useState
+useState;
 
 const Counter = () => {
+  const [counter, funcionDelCounter] = useState(0); // [variable, funcion]
 
-  const [counter, funcionDelCounter ] = useState(0)
-  console.log (counter)
+  // console.log ( x [0] ) // [variable, funcion]
 
-  const sumar = ()=>{
-    funcionDelCounter (counter + 1)
-  }
-  const restar = ()=>{
-    funcionDelCounter (counter - 1)
-  }
+  console.log(counter);
+
+  const sumar = () => {
+    funcionDelCounter(counter + 1);
+  };
+  const restar = () => {
+    funcionDelCounter(counter - 1);
+  };
 
   return (
     <div>
@@ -20,7 +22,7 @@ const Counter = () => {
       <h4> {counter} </h4>
       <button onClick={restar}>restar</button>
     </div>
-  )
-}
+  );
+};
 
-export default Counter
+export default Counter;
