@@ -2,10 +2,10 @@ import { FaShoppingCart } from "react-icons/fa";
 const CartWidget = () => {
   return (
     <div>
-    <span>0</span>
-    <FaShoppingCart color="red" />
-  </div>
-  )
-}
+      <FaShoppingCart color="yellow" />
+      <span>0</span>
+    </div>
+  );
+};
 
-export default CartWidget
+export default CartWidget;
