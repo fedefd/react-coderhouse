@@ -20,6 +20,12 @@ import { Link } from "react-router-dom";
 const pages = ["Productos", "Ofertas", "Categorías", "hola"];
 const settings = ["Perfil", "Cuenta", "Panel de usuario", "Salir de la sesion"];
 
+const pageRoutes = {
+  Productos: "/products",
+  Ofertas: "/offers",
+  Categorías: "/categories",
+};
+
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -138,7 +144,7 @@ function Navbar() {
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 <Link
-                  to="/products"
+                  to={pageRoutes[page]}
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
                   {page}
