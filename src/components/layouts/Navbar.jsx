@@ -17,14 +17,23 @@ import CartWidget from "../common/CartWidget";
 
 import { Link } from "react-router-dom";
 
-const pages = ["Productos", "Ofertas", "Calzados", "Ropa"];
+const pages = [
+  "Productos",
+  "Libros",
+  "Electronicos",
+  "Merchandising",
+  "Papeleria",
+  "Juegos",
+];
 const settings = ["Perfil", "Cuenta", "Panel de usuario", "Salir de la sesion"];
 
 const pageRoutes = {
   Productos: "/products",
-  Ofertas: "/offers",
-  Calzados: "/category/calzados",
-  Ropa: "/category/ropa",
+  Libros: "/category/Libros",
+  Electronicos: "/category/dispositivos-electronicos",
+  Merchandising: "/category/merchadising-literario",
+  Papeleria: "/category/material-papeleria",
+  Juegos: "/category/juegos-de-mesa",
 };
 
 function Navbar() {

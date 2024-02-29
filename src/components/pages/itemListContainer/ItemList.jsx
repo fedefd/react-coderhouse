@@ -17,11 +17,20 @@ const ItemList = ({ products }) => {
       </ul>
       <div>
         <h2>Seleccione una categoría:</h2>
-        <Link to="/category/calzados">
-          <button>Calzados</button>
+        <Link to="/category/Libros">
+          <button>Libros</button>
         </Link>
-        <Link to="/category/ropa">
-          <button>Ropa</button>
+        <Link to="/category/dispositivos-electronicos">
+          <button>Dispositivos Electronicos</button>
+        </Link>
+        <Link to="/category/merchadising-literario">
+          <button>Merchadising Literario</button>
+        </Link>
+        <Link to="/category/material-papeleria">
+          <button>Material de Papeleria</button>
+        </Link>
+        <Link to="/category/juegos-de-mesa">
+          <button>Juegos de Mesa</button>
         </Link>
       </div>
     </div>
