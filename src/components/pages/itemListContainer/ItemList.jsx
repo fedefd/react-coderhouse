@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ItemList = ({ products }) => {
   return (
     <div>
@@ -13,6 +15,15 @@ const ItemList = ({ products }) => {
         ))}
         ;
       </ul>
+      <div>
+        <h2>Seleccione una categoría:</h2>
+        <Link to="/category/calzados">
+          <button>Calzados</button>
+        </Link>
+        <Link to="/category/ropa">
+          <button>Ropa</button>
+        </Link>
+      </div>
     </div>
   );
 };

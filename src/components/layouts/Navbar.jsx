@@ -17,13 +17,14 @@ import CartWidget from "../common/CartWidget";
 
 import { Link } from "react-router-dom";
 
-const pages = ["Productos", "Ofertas", "Categorías", "hola"];
+const pages = ["Productos", "Ofertas", "Calzados", "Ropa"];
 const settings = ["Perfil", "Cuenta", "Panel de usuario", "Salir de la sesion"];
 
 const pageRoutes = {
   Productos: "/products",
   Ofertas: "/offers",
-  Categorías: "/categories",
+  Calzados: "/category/calzados",
+  Ropa: "/category/ropa",
 };
 
 function Navbar() {
