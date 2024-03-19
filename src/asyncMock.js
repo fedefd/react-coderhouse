@@ -70,7 +70,7 @@ export const getProducts = () => {
     if (products.length > 0) {
       setTimeout(() => {
         resolve(products);
-      }, 1000);
+      }, 300);
     } else {
       reject("no hay productos");
     }
@@ -88,7 +88,7 @@ export const getProduct = (id) => {
         } else {
           reject("no se encuentra el producto");
         }
-      }, 1000);
+      }, 300);
     } else {
       reject("no hay productos");
     }
