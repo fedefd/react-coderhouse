@@ -7,10 +7,12 @@ const ItemList = ({ products }) => {
       <ul>
         {products.map((product) => (
           <li key={product.id}>
-            <img src={product.img} alt={product.name} />
-            <h3>{product.name}</h3>
-            <p>Precio: ${product.price}</p>
-            <p>Stock: {product.stock}</p>
+            <Link to={`/item/${product.id}`}>
+              <img src={product.img} alt={product.name} />
+              <h3>{product.name}</h3>
+              <p>Precio: ${product.price}</p>
+              <p>Stock: {product.stock}</p>
+            </Link>
           </li>
         ))}
         ;

@@ -1,6 +1,6 @@
 const products = [
   {
-    id: "1",
+    id: 1,
     name: "El principito",
     img: "url",
     price: 200,
@@ -8,7 +8,7 @@ const products = [
     stock: 20,
   },
   {
-    id: "2",
+    id: 2,
     name: "Cien años de soledad",
     img: "url",
     price: 250,
@@ -16,7 +16,7 @@ const products = [
     stock: 15,
   },
   {
-    id: "3",
+    id: 3,
     name: "Breve historia del tiempo",
     img: "url",
     price: 180,
@@ -24,7 +24,7 @@ const products = [
     stock: 18,
   },
   {
-    id: "4",
+    id: 4,
     name: "Sapiens: De animales a dioses",
     img: "url",
     price: 220,
@@ -32,7 +32,7 @@ const products = [
     stock: 12,
   },
   {
-    id: "5",
+    id: 5,
     name: "E-reader Kindle Paperwhite",
     img: "url",
     price: 150,
@@ -40,7 +40,7 @@ const products = [
     stock: 10,
   },
   {
-    id: "6",
+    id: 6,
     name: "Conjunto de taza y posavasos con cita literaria",
     img: "url",
     price: 30,
@@ -48,7 +48,7 @@ const products = [
     stock: 25,
   },
   {
-    id: "7",
+    id: 7,
     name: "Cuaderno de escritura creativa",
     img: "url",
     price: 15,
@@ -56,7 +56,7 @@ const products = [
     stock: 30,
   },
   {
-    id: "8",
+    id: 8,
     name: "Juego de mesa de trivia literaria",
     img: "url",
     price: 40,
