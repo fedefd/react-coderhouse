@@ -1,7 +1,6 @@
 import ItemCountContainer from "../../common/ItemCount/ItemCountContainer";
 
 const ItemDetail = ({ item, onAdd }) => {
-  console.log(item);
   return (
     <>
       <div>

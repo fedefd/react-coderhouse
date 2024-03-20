@@ -1,7 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getProduct } from "../../../asyncMock";
+import { CartContext } from "../../context/CartContext";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -10,6 +11,8 @@ const ItemDetailContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
+
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     getProduct(+id).then((resp) => {
@@ -23,7 +26,7 @@ const ItemDetailContainer = () => {
       ...item,
       quantity: cantidad,
     };
-    console.log(infoProducto);
+    addToCart(infoProducto);
 
     // navegar al carrito
     navigate("/cart");
