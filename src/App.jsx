@@ -7,6 +7,10 @@ import ItemDetailContainer from "./components/pages/itemDetailContainer/ItemDeta
 import CheckoutContainer from "./components/pages/checkout/CheckoutContainer";
 import CartContextProvider from "./components/context/CartContext";
 import CartContainer from "./components/pages/cart/CartContainer";
+import FetchingAxios from "./components/pages/fetchingAxios/FetchingAxios";
+import Dashboard from "./components/pages/dashboard/Dashboard";
+import ProtectedRoutes from "./ProtectedRoutes";
+
 const App = () => {
   return (
     <div>
@@ -29,6 +33,13 @@ const App = () => {
               <Route path="/item/:id" element={<ItemDetailContainer />} />
               <Route path="/checkout" element={<CheckoutContainer />} />
               <Route path="*" element={<NotFound />} />
+              <Route path="/fetching-axios" element={<FetchingAxios />} />
+            </Route>
+
+            <Route element={<ProtectedRoutes />}>
+              <Route element={<Layout />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+              </Route>
             </Route>
           </Routes>
         </CartContextProvider>

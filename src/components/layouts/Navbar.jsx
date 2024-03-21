@@ -17,6 +17,7 @@ import CartWidget from "../common/CartWidget";
 
 import { Link } from "react-router-dom";
 
+let user = { rol: "user" };
 const pages = [
   "Productos",
   "Libros",
@@ -34,6 +35,7 @@ const pageRoutes = {
   Merchandising: "/category/merchadising-literario",
   Papeleria: "/category/material-papeleria",
   Juegos: "/category/juegos-de-mesa",
+  Dashboard: "/dashboard",
 };
 
 function Navbar() {
@@ -122,6 +124,19 @@ function Navbar() {
                     </Typography>
                   </MenuItem>
                 ))}
+
+                {user.rol === "admin" && (
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">
+                      <Link
+                        to={pageRoutes["Dashboard"]}
+                        style={{ textDecoration: "none", color: "inherit" }}
+                      >
+                        Dashboard
+                      </Link>
+                    </Typography>
+                  </MenuItem>
+                )}
               </Menu>
             </Box>
 
@@ -160,6 +175,18 @@ function Navbar() {
                   </Link>
                 </Button>
               ))}
+              {user.rol === "admin" && (
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                    <Link
+                      to={pageRoutes["Dashboard"]}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      Dashboard
+                    </Link>
+                  </Typography>
+                </MenuItem>
+              )}
             </Box>
             <Box
               sx={{
