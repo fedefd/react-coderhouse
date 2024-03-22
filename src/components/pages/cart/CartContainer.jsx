@@ -44,20 +44,21 @@ const CartContainer = () => {
         </div>
       ))}
 
-      <h2>el total a pagar es: $ {totalPrice} </h2>
-
       {cart.length > 0 ? (
-        <div>
-          <Button variant="contained" onClick={botonAtras}>
-            Volver
-          </Button>
-          <Link to="/checkout">
-            <Button variant="contained">terminar compra</Button>
-          </Link>
-          <Button variant="contained" onClick={limpiarConAlerta}>
-            Limpiar Carrito
-          </Button>
-        </div>
+        <>
+          <h2>el total a pagar es: $ {totalPrice} </h2>
+          <div>
+            <Button variant="contained" onClick={botonAtras}>
+              Volver
+            </Button>
+            <Link to="/checkout">
+              <Button variant="contained">terminar compra</Button>
+            </Link>
+            <Button variant="contained" onClick={limpiarConAlerta}>
+              Limpiar Carrito
+            </Button>
+          </div>
+        </>
       ) : (
         <div>
           <Button variant="contained" onClick={botonAtras}>
