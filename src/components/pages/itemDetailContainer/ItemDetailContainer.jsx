@@ -1,8 +1,11 @@
 import { useParams, useNavigate } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
 import { useContext, useEffect, useState } from "react";
-import { getProduct } from "../../../asyncMock";
 import { CartContext } from "../../context/CartContext";
+import CircularLoader from "../../common/CircularLoader/CircularLoader";
+import Swal from "sweetalert2";
+import { db } from "../../../firebaseConfig";
+import { collection, doc, getDoc } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -12,13 +15,19 @@ const ItemDetailContainer = () => {
 
   const navigate = useNavigate();
 
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, getTotalQuantityById } = useContext(CartContext);
+
+  const initial = getTotalQuantityById(id);
 
   useEffect(() => {
-    getProduct(+id).then((resp) => {
-      setItem(resp);
-      setIsLoading(false);
-    });
+    setIsLoading(true);
+    let productsCollection = collection(db, "products");
+    let refDoc = doc(productsCollection, id);
+    getDoc(refDoc)
+      .then((res) => {
+        setItem({ ...res.data(), id: res.id });
+      })
+      .finally(setIsLoading(false));
   }, [id]);
 
   const onAdd = (cantidad) => {
@@ -27,17 +36,32 @@ const ItemDetailContainer = () => {
       quantity: cantidad,
     };
     addToCart(infoProducto);
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: `agregaste ${cantidad} producto/s al carrito!`,
+      showConfirmButton: false,
+      timer: 1200,
+    });
+  };
 
+  const irAlCarrito = () => {
     // navegar al carrito
     navigate("/cart");
   };
 
+  if (isLoading) {
+    return <CircularLoader />;
+  }
   return (
     <>
-      {isLoading ? (
-        <h2>Cargando producto..</h2>
-      ) : (
-        item && <ItemDetail item={item} onAdd={onAdd} />
+      {item && (
+        <ItemDetail
+          irAlCarrito={irAlCarrito}
+          item={item}
+          onAdd={onAdd}
+          initial={initial}
+        />
       )}
     </>
   );

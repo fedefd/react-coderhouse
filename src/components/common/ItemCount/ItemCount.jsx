@@ -1,4 +1,6 @@
-const ItemCount = ({ counter, addOne, subOne, onAdd }) => {
+import { FaShoppingCart } from "react-icons/fa";
+
+const ItemCount = ({ counter, addOne, subOne, onAdd, irAlCarrito }) => {
   return (
     <>
       <button onClick={addOne}>+</button>
@@ -7,6 +9,10 @@ const ItemCount = ({ counter, addOne, subOne, onAdd }) => {
         -
       </button>
       <button onClick={() => onAdd(counter)}>agregar al carrito</button>
+
+      <button onClick={irAlCarrito}>
+        <FaShoppingCart color="red" size="10px" />
+      </button>
     </>
   );
 };

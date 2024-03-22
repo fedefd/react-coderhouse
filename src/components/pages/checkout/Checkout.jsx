@@ -23,7 +23,7 @@ const Checkout = ({ envioDeFormulario, capturar }) => {
           onChange={capturar}
         />
 
-        <button type="submit">Enviar</button>
+        <button type="submit">Comprar</button>
       </form>
     </div>
   );

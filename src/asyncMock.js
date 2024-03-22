@@ -3,7 +3,7 @@ const products = [
     id: 1,
     name: "El principito",
     img: "url",
-    price: 200,
+    price: 7999,
     category: "Libros",
     stock: 20,
   },
@@ -11,7 +11,7 @@ const products = [
     id: 2,
     name: "Cien años de soledad",
     img: "url",
-    price: 250,
+    price: 7500,
     category: "Libros",
     stock: 15,
   },
@@ -70,7 +70,7 @@ export const getProducts = () => {
     if (products.length > 0) {
       setTimeout(() => {
         resolve(products);
-      }, 300);
+      }, 200);
     } else {
       reject("no hay productos");
     }
@@ -88,7 +88,7 @@ export const getProduct = (id) => {
         } else {
           reject("no se encuentra el producto");
         }
-      }, 300);
+      }, 200);
     } else {
       reject("no hay productos");
     }

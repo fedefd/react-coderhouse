@@ -3,7 +3,9 @@ import { FaShoppingCart } from "react-icons/fa";
 import { CartContext } from "../context/CartContext";
 
 const CartWidget = () => {
-  const { cart } = useContext(CartContext);
+  const { getTotalItems } = useContext(CartContext);
+
+  let totalItems = getTotalItems();
 
   return (
     <div>
@@ -22,7 +24,7 @@ const CartWidget = () => {
           padding: "3px",
         }}
       >
-        {cart.length}
+        {totalItems}
       </span>
     </div>
   );
