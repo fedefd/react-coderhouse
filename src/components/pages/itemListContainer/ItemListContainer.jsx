@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
-import CircularLoader from "../../common/CircularLoader/CircularLoader";
+import CircularLoader from "../../common/circularLoader/CircularLoader";
 import { db } from "../../../firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
