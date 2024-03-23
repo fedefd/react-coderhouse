@@ -2,6 +2,10 @@ import Checkout from "./Checkout";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Swal from "sweetalert2";
+import { useContext, useState } from "react";
+import { CartContext } from "../../context/CartContext";
+import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
+import { db } from "../../../firebaseConfig";
 
 const CheckoutContainer = () => {
   // const [userInfo, setUserInfo] = useState({
@@ -21,16 +25,56 @@ const CheckoutContainer = () => {
   //   console.log(e);
   // };
 
+  const { cart, getTotalPrice, clearCart } = useContext(CartContext);
+  let totalPrice = getTotalPrice();
+  const [orderId, setOrderId] = useState(null);
   const { handleSubmit, handleChange, errors } = useFormik({
     initialValues: {
+      name: "",
+      phone: "",
       email: "",
       password: "",
       confirmPassword: "",
     },
     onSubmit: (data) => {
-      console.log(data);
+      if (!cart || cart.length === 0) {
+        console.error("El carrito está vacío");
+        return;
+      }
+
+      if (
+        typeof totalPrice !== "number" ||
+        isNaN(totalPrice) ||
+        totalPrice <= 0
+      ) {
+        console.error("El precio total del carrito no es válido");
+        return;
+      }
+
+      let order = {
+        buyer: data,
+        items: cart,
+        total: totalPrice,
+      };
+
+      let ordersCollection = collection(db, "orders");
+      addDoc(ordersCollection, order).then((res) => setOrderId(res.id));
+
+      cart.forEach((product) => {
+        let refDoc = doc(db, "products", product.id);
+        updateDoc(refDoc, { stock: product.stock - product.quantity });
+      });
+      clearCart();
     },
     validationSchema: yup.object({
+      name: yup.string().required("Campo requerido"),
+      phone: yup
+        .number("ingresa un numero de teléfono válido")
+        .moreThan(7, "El teléfono debe tener mas de 8 dígitos")
+        .required("Campo requerido")
+        .positive("El teléfono debe ser un número positivo")
+        .integer("El teléfono debe ser un número entero")
+        .typeError("El teléfono debe ser un número"),
       email: yup
         .string()
         .required("Campo requerido")
@@ -58,12 +102,12 @@ const CheckoutContainer = () => {
     validateOnChange: false,
   });
 
-  console.log(errors);
   return (
     <Checkout
       errors={errors}
       handleSubmit={handleSubmit}
       handleChange={handleChange}
+      orderId={orderId}
     />
   );
 };

@@ -1,7 +1,7 @@
 import Home from "./Home";
 
-const HomeContainer = ({ greeting }) => {
-  return <Home greeting={greeting} />;
+const HomeContainer = () => {
+  return <Home />;
 };
 
 export default HomeContainer;

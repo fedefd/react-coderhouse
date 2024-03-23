@@ -1,78 +1,83 @@
 import { Box, Button, TextField } from "@mui/material";
+import { Link } from "react-router-dom";
 
-const Checkout = ({ handleSubmit, handleChange, errors }) => {
+const Checkout = ({ handleSubmit, handleChange, errors, orderId }) => {
   return (
     <div style={{ padding: "50px", display: "flex", justifyContent: "center" }}>
-      <form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "50%",
-          gap: "15px",
-        }}
-      >
-        <TextField
-          label="Email"
-          variant="outlined"
-          name="email"
-          onChange={handleChange}
-          error={errors.email ? true : false}
-          helperText={errors.email}
-        />
-        <TextField
-          label="Contraseña"
-          variant="outlined"
-          name="password"
-          onChange={handleChange}
-          error={errors.password ? true : false}
-          helperText={errors.password}
-        />
-        <TextField
-          label="Confirmar contraseña"
-          variant="outlined"
-          name="confirmPassword"
-          onChange={handleChange}
-          error={errors.confirmPassword ? true : false}
-          helperText={errors.confirmPassword}
-        />
-        <Box sx={{ width: "100%", display: "flex", justifyContent: "end" }}>
-          <Button
-            onClick={handleSubmit}
-            type="submit"
-            variant="contained"
-            sx={{ width: 100 }}
-          >
-            Comprar
+      {orderId ? (
+        <div>
+          {" "}
+          <h2>Gracias, tu numero de compra es {orderId}</h2>
+          <Button variant="outlined">
+            {" "}
+            <Link to="/products">Seguir comprando</Link>{" "}
           </Button>
-        </Box>
-      </form>
-
-      {/*    <div>
-      <h1>checkout</h1>
-
-      <form onSubmit={envioDeFormulario}>
-        <input
-          name="name"
-          type="text"
-          placeholder="ingresa tu nombre"
-          onChange={capturar} 
-        />
-        <input
-          name="lastName"
-          type="text"
-          placeholder="ingresa tu apellido"
-          onChange={capturar}
-        />
-        <input
-          name="email"
-          type="text"
-          placeholder="ingresa tu mail"
-          onChange={capturar}
-        />
-
-        <button type="submit">Comprar</button>
-      </form>
-    </div> */}
+        </div>
+      ) : (
+        <form
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width: "50%",
+            gap: "15px",
+          }}
+        >
+          <TextField
+            label="Nombre y Apellido"
+            variant="outlined"
+            name="name"
+            onChange={handleChange}
+            error={errors.name ? true : false}
+            helperText={errors.name}
+            autoComplete="name"
+          />
+          <TextField
+            label="Teléfono"
+            variant="outlined"
+            name="phone"
+            onChange={handleChange}
+            error={errors.phone ? true : false}
+            helperText={errors.phone}
+            type="number"
+            autoComplete="tel"
+          />
+          <TextField
+            label="Email"
+            variant="outlined"
+            name="email"
+            onChange={handleChange}
+            error={errors.email ? true : false}
+            helperText={errors.email}
+            autoComplete="email"
+          />
+          <TextField
+            label="Contraseña"
+            variant="outlined"
+            name="password"
+            onChange={handleChange}
+            error={errors.password ? true : false}
+            helperText={errors.password}
+          />
+          <TextField
+            label="Confirmar contraseña"
+            variant="outlined"
+            name="confirmPassword"
+            onChange={handleChange}
+            error={errors.confirmPassword ? true : false}
+            helperText={errors.confirmPassword}
+          />
+          <Box sx={{ width: "100%", display: "flex", justifyContent: "end" }}>
+            <Button
+              onClick={handleSubmit}
+              type="submit"
+              variant="contained"
+              sx={{ width: 100 }}
+            >
+              Comprar
+            </Button>
+          </Box>
+        </form>
+      )}
     </div>
   );
 };
