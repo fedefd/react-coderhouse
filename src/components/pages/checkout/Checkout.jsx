@@ -7,7 +7,7 @@ const Checkout = ({ handleSubmit, handleChange, errors, orderId }) => {
       {orderId ? (
         <div>
           {" "}
-          <h2>Gracias, tu numero de compra es {orderId}</h2>
+          <h2>Gracias por tu compra, tu número de compra es: {orderId}</h2>
           <Button variant="outlined">
             {" "}
             <Link to="/products">Seguir comprando</Link>{" "}
