@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
-import CircularLoader from "../../common/CircularLoader/CircularLoader";
+import CircularLoader from "../../common/circularLoader/CircularLoader";
 import Swal from "sweetalert2";
 import { db } from "../../../firebaseConfig";
 import { collection, doc, getDoc } from "firebase/firestore";
