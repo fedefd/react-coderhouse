@@ -8,10 +8,9 @@
 
 [Bookpolis]()
 
-```
-
 #### para hacer funcionar la página configura estas variables
 
+```
 - VITE_APIKEY=
 - VITE_AUTH_DOMAIN=
 - VITE_PROJECT_ID=
