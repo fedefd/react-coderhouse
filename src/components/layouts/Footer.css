@@ -1,0 +1,20 @@
+.footer-container {
+  padding: 0;
+  margin: 10px auto;
+  width: 100%;
+  max-width: calc(100% - 25px);
+}
+
+.footer-paper {
+  background-color: #64b5f6 !important;
+  padding: 20px;
+}
+
+.footer-text {
+  color: white;
+  text-align: center;
+}
+
+.footer-icons {
+  text-align: right;
+}
