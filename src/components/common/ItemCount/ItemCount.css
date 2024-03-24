@@ -1,0 +1,19 @@
+.itemCount {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 100%;
+}
+.itemCountButton {
+  align-self: center;
+}
+
+.addToCartWrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.seeCart {
+  display: flex;
+  max-width: 100%;
+  justify-content: end;
+}

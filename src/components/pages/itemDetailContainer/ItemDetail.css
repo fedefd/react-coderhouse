@@ -1,0 +1,41 @@
+.itemDetailWrapper {
+  display: flex;
+  padding: 5px;
+  margin: 5px;
+  justify-content: space-evenly;
+}
+.itemDetails {
+  max-width: 500px;
+}
+
+.itemCard {
+  width: 300px;
+  max-height: 3000px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.itemCardImg {
+  max-width: 130px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+
+.itemCardPrice {
+  font-weight: 700 !important;
+  display: flex;
+  justify-content: center;
+}
+.itemCardStock {
+  display: flex;
+  justify-content: start;
+}
+.itemCardTextShow {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  color: #b5db70;
+  font-weight: 800;
+}

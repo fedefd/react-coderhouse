@@ -20,14 +20,20 @@ const ItemDetailContainer = () => {
   const initial = getTotalQuantityById(id);
 
   useEffect(() => {
+    let isMounted = true;
     setIsLoading(true);
     let productsCollection = collection(db, "products");
     let refDoc = doc(productsCollection, id);
-    getDoc(refDoc)
-      .then((res) => {
-        setItem({ ...res.data(), id: res.id });
-      })
-      .finally(setIsLoading(false));
+    getDoc(refDoc).then((res) => {
+      if (isMounted) {
+        if (res.exists()) {
+          setItem({ ...res.data(), id: res.id });
+        } else {
+          console.error("El producto no existe");
+        }
+        setIsLoading(false);
+      }
+    });
   }, [id]);
 
   const onAdd = (cantidad) => {
@@ -46,7 +52,6 @@ const ItemDetailContainer = () => {
   };
 
   const irAlCarrito = () => {
-    // navegar al carrito
     navigate("/cart");
   };
 

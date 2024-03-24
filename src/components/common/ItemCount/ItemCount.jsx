@@ -1,19 +1,46 @@
-import { FaShoppingCart } from "react-icons/fa";
+import { Button, IconButton } from "@mui/material";
+import { ShoppingCart } from "@mui/icons-material";
+import "./ItemCount.css";
 
 const ItemCount = ({ counter, addOne, subOne, onAdd, irAlCarrito }) => {
   return (
-    <>
-      <button onClick={addOne}>+</button>
-      <h4>{counter}</h4>
-      <button onClick={subOne} disabled={counter === 1 ? true : false}>
-        -
-      </button>
-      <button onClick={() => onAdd(counter)}>agregar al carrito</button>
-
-      <button onClick={irAlCarrito}>
-        <FaShoppingCart color="red" size="10px" />
-      </button>
-    </>
+    <div>
+      <div className="itemCount">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={subOne}
+          disabled={counter === 1}
+          className="itemCountButton"
+        >
+          -
+        </Button>
+        <h4 style={{ marginRight: "10px" }}>{counter}</h4>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={addOne}
+          className="itemCountButton"
+        >
+          +
+        </Button>
+      </div>
+      <div className="addToCartWrapper">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => onAdd(counter)}
+        >
+          Agregar al carrito
+        </Button>
+      </div>
+      <div className="seeCart">
+        <IconButton color="primary" onClick={irAlCarrito}>
+          Ver Carrito
+          <ShoppingCart color="red" />
+        </IconButton>
+      </div>
+    </div>
   );
 };
 
