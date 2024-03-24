@@ -24,7 +24,7 @@ const ItemDetail = ({ item, onAdd, initial, irAlCarrito }) => {
               color="text.secondary"
               className="itemCardStock"
             >
-              Stock: {item.stock}
+              En stock: {item.stock}
             </Typography>
           </CardContent>
 
@@ -43,23 +43,7 @@ const ItemDetail = ({ item, onAdd, initial, irAlCarrito }) => {
           </div>
         </Card>
         <div className="itemDetails">
-          <p>
-            Kindle Paperwhite: ahora con una pantalla de 6.8” y bordes más
-            delgados, luz cálida ajustable, batería de hasta 10 semanas de
-            duración y cambios de página 20 % más rápidos. Hecha especialmente
-            para leer: tiene una pantalla con diseño frontal a ras y sin
-            reflejo, de 300 ppi, que parece papel real incluso ante luz solar
-            directa. Más libros en más lugares: guarda miles de títulos y
-            llévalos todos contigo. Una sola carga vía USB-C dura semanas, no
-            horas. No daña los ojos: ahora la luz cálida ajustable se oscurece
-            de blanco a ámbar al cambiar la pantalla. Lectura sin miedo al agua:
-            hecha para resistir la inmersión accidental en agua, puedes estar
-            tranquilo en la playa o en el baño. Encuentra nuevas historias: con
-            Kindle Unlimited obtén acceso ilimitado a más de dos millones de
-            títulos, miles de audiolibros y más. Úsala con manos libres:
-            conéctate con una suscripción Audible y unos audífonos o bocinas
-            Bluetooth para escuchar tus historias.
-          </p>
+          <p>{item.detail}</p>
         </div>
       </div>
     </>

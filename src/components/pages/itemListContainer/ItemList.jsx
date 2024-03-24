@@ -1,41 +1,89 @@
 import { Link } from "react-router-dom";
-
+import "./ItemList.css";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 const ItemList = ({ products }) => {
   return (
-    <div>
-      <h2>Productos</h2>
-      <ul>
+    <>
+      <h2>Conocé todos nuestros productos</h2>
+      <div className="itemList">
         {products.map((product) => (
-          <li key={product.id}>
-            <Link to={`/item/${product.id}`}>
-              <img src={product.img} alt={product.name} />
-              <h3>{product.name}</h3>
-              <p>Precio: ${product.price}</p>
-              <p>Stock: {product.stock}</p>
+          <Card key={product.id} className="itemListProductCard">
+            <Link to={`/item/${product.id}`} className="itemListButtonLink">
+              <CardContent>
+                <Typography gutterBottom variant="h6" component="div">
+                  {product.name}
+                </Typography>
+                <CardMedia
+                  component="img"
+                  image={product.img}
+                  alt={product.name}
+                  className="itemListImg"
+                />
+                <Typography
+                  gutterBottom
+                  component="span"
+                  style={{ fontSize: ".9rem" }}
+                >
+                  {product.cardDetail}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  style={{ fontWeight: 700 }}
+                >
+                  $ {product.price}
+                </Typography>
+              </CardContent>
             </Link>
-          </li>
+          </Card>
         ))}
-        ;
-      </ul>
-      <div>
-        <h2>Seleccione una categoría:</h2>
-        <Link to="/category/Libros">
-          <button>Libros</button>
-        </Link>
-        <Link to="/category/dispositivos-electronicos">
-          <button>Dispositivos Electronicos</button>
-        </Link>
-        <Link to="/category/merchadising-literario">
-          <button>Merchadising Literario</button>
-        </Link>
-        <Link to="/category/material-papeleria">
-          <button>Material de Papeleria</button>
-        </Link>
-        <Link to="/category/juegos-de-mesa">
-          <button>Juegos de Mesa</button>
-        </Link>
       </div>
-    </div>
+      <div>
+        <h3>O busque por categoría:</h3>
+        <div className="itemListButtonCategoryWrapper">
+          <Button variant="contained" className="itemListButtonCategory">
+            <Link to="/category/Libros" className="itemListButtonLink">
+              Libros
+            </Link>
+          </Button>
+          <Button variant="contained" className="itemListButtonCategory">
+            <Link
+              to="/category/dispositivos-electronicos"
+              className="itemListButtonLink"
+            >
+              Dispositivos Electronicos
+            </Link>
+          </Button>
+          <Button variant="contained" className="itemListButtonCategory">
+            <Link
+              to="/category/merchadising-literario"
+              className="itemListButtonLink"
+            >
+              Merchadising Literario
+            </Link>
+          </Button>
+          <Button variant="contained" className="itemListButtonCategory">
+            <Link
+              to="/category/material-papeleria"
+              className="itemListButtonLink"
+            >
+              Material de Papeleria
+            </Link>
+          </Button>
+          <Button variant="contained" className="itemListButtonCategory">
+            <Link to="/category/juegos-de-mesa" className="itemListButtonLink">
+              Juegos de Mesa
+            </Link>
+          </Button>
+        </div>
+      </div>
+    </>
   );
 };
 
