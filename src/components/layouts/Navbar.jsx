@@ -7,11 +7,11 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+import "./Navbar.css";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 import CartWidget from "../common/CartWidget";
 
@@ -160,28 +160,28 @@ function Navbar() {
                 Bookpolis
               </Link>
             </Typography>
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                justifyContent: "center",
+                gap: "10px",
+              }}
+            >
               {pages.map((page) => (
-                <Button
+                <Link
                   key={page}
+                  to={pageRoutes[page]}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  className="navbarPages"
                 >
-                  <Link
-                    to={pageRoutes[page]}
-                    style={{ textDecoration: "none", color: "inherit" }}
-                  >
-                    {page}
-                  </Link>
-                </Button>
+                  {page}
+                </Link>
               ))}
               {user.rol === "admin" && (
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link
-                      to={pageRoutes["Dashboard"]}
-                      style={{ textDecoration: "none", color: "inherit" }}
-                    >
+                    <Link to={pageRoutes["Dashboard"]} className="navbarPages">
                       Dashboard
                     </Link>
                   </Typography>
@@ -199,9 +199,9 @@ function Navbar() {
               <Tooltip title="Open settings">
                 <IconButton
                   onClick={handleOpenUserMenu}
-                  sx={{ p: 0, paddingRight: "7px" }}
+                  sx={{ p: 0, paddingRight: "7px", marginRight: "12px" }}
                 >
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <SettingsIcon style={{ color: "white" }} />
                 </IconButton>
               </Tooltip>
               <Link
