@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import "./Cart.css";
 
 const Cart = ({
   cart,
@@ -10,14 +11,19 @@ const Cart = ({
 }) => {
   return (
     <div>
-      {cart.map((product) => (
-        <div key={product.id} style={{ border: "1px solid black" }}>
-          <h2>nombre: {product.name}</h2>
-          <h3>cantidad: {product.quantity}</h3>
-          <h3>precio: $ {product.price * product.quantity} </h3>
-          <button onClick={() => removeById(product.id)}>Eliminar</button>
+      <div className="cartProductBody">
+        <div className="cartProductWrapper">
+          {cart.map((product) => (
+            <div key={product.id} className="cartProduct">
+              <h2>nombre: {product.name}</h2>
+              <h3>cantidad: {product.quantity}</h3>
+              <h3>precio: $ {product.price * product.quantity} </h3>
+              <button onClick={() => removeById(product.id)}>Eliminar</button>
+            </div>
+          ))}
         </div>
-      ))}
+        <div>Resumen de compra</div>
+      </div>
 
       {cart.length > 0 ? (
         <>
@@ -36,6 +42,9 @@ const Cart = ({
         </>
       ) : (
         <div>
+          <div>
+            <h3>Tu carrito está vacio!</h3>
+          </div>
           <Button variant="contained" onClick={botonAtras}>
             Volver
           </Button>

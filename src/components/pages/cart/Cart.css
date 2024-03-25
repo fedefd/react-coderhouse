@@ -1,0 +1,10 @@
+.cartProductBody {
+  display: flex;
+}
+
+.cartProductWrapper {
+}
+
+.cartProduct {
+  border: 1px solid black;
+}

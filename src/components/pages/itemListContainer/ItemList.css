@@ -8,15 +8,16 @@
   max-width: 300px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .itemListImg {
   width: 100%;
   max-width: 170px;
-  height: auto;
+  height: 150px;
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 .itemListButtonCategoryWrapper {
   display: flex;
@@ -30,4 +31,13 @@
 .itemListButtonLink {
   text-decoration: none;
   color: inherit;
+}
+
+.categoryIcon {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 5px;
 }

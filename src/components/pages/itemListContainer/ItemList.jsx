@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { getCategoryIcon } from "../../common/categoryIcons/CategoryIcons";
 import "./ItemList.css";
 import {
   Button,
@@ -16,7 +17,12 @@ const ItemList = ({ products }) => {
           <Card key={product.id} className="itemListProductCard">
             <Link to={`/item/${product.id}`} className="itemListButtonLink">
               <CardContent>
-                <Typography gutterBottom variant="h6" component="div">
+                <Typography
+                  gutterBottom
+                  variant="h4"
+                  component="div"
+                  style={{ fontSize: "1.1rem", height: "55px" }}
+                >
                   {product.name}
                 </Typography>
                 <CardMedia
@@ -39,6 +45,9 @@ const ItemList = ({ products }) => {
                 >
                   $ {product.price}
                 </Typography>
+                <div className="categoryIcon">
+                  {getCategoryIcon(product.category)}
+                </div>
               </CardContent>
             </Link>
           </Card>
