@@ -84,23 +84,27 @@ const Cart = ({
             </div>
           ))}
         </div>
-        <div className="cartSummary">
-          <h5 style={{ alignSelf: "center" }}>Resumen de compra</h5>
-          <p>Productos ({getTotalQuantity()}) </p>
-          <div className="cartSummaryPrice">
-            <p>Total </p>{" "}
-            <p>
-              {totalPrice.toLocaleString("es-AR", {
-                style: "currency",
-                currency: "ARS",
-                minimumFractionDigits: 0,
-              })}
-            </p>
+        {cart.length > 0 ? (
+          <div className="cartSummary">
+            <h5 style={{ alignSelf: "center" }}>Resumen de compra</h5>
+            <p>Productos ({getTotalQuantity()}) </p>
+            <div className="cartSummaryPrice">
+              <p>Total </p>{" "}
+              <p>
+                {totalPrice.toLocaleString("es-AR", {
+                  style: "currency",
+                  currency: "ARS",
+                  minimumFractionDigits: 0,
+                })}
+              </p>
+            </div>
+            <Link to="/checkout" style={{ alignSelf: "center" }}>
+              <Button variant="contained">Continuar con la compra</Button>
+            </Link>
           </div>
-          <Link to="/checkout" style={{ alignSelf: "center" }}>
-            <Button variant="contained">Continuar con la compra</Button>
-          </Link>
-        </div>
+        ) : (
+          <></>
+        )}
       </div>
 
       {cart.length > 0 ? (
