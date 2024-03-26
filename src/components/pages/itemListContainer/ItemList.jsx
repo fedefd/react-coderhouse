@@ -43,11 +43,12 @@ const ItemList = ({ products }) => {
                   color="text.secondary"
                   style={{ fontWeight: 700 }}
                 >
-                  {product.price.toLocaleString("es-AR", {
-                    style: "currency",
-                    currency: "ARS",
-                    minimumFractionDigits: 0,
-                  })}
+                  {product.price &&
+                    Number(product.price).toLocaleString("es-AR", {
+                      style: "currency",
+                      currency: "ARS",
+                      minimumFractionDigits: 0,
+                    })}
                 </Typography>
                 <div className="categoryIcon">
                   {getCategoryIcon(product.category)}
