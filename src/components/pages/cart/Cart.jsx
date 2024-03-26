@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, CardMedia } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./Cart.css";
 
@@ -9,20 +9,98 @@ const Cart = ({
   botonAtras,
   limpiarConAlerta,
 }) => {
+  const getTotalQuantity = () => {
+    return cart.reduce((total, product) => total + product.quantity, 0);
+  };
   return (
     <div>
       <div className="cartProductBody">
         <div className="cartProductWrapper">
           {cart.map((product) => (
             <div key={product.id} className="cartProduct">
-              <h2>nombre: {product.name}</h2>
-              <h3>cantidad: {product.quantity}</h3>
-              <h3>precio: $ {product.price * product.quantity} </h3>
-              <button onClick={() => removeById(product.id)}>Eliminar</button>
+              <CardMedia
+                component="img"
+                image={product.img}
+                alt={product.name}
+                sx={{
+                  width: "100px",
+                  height: "100px",
+                }}
+                className="cartProductImg"
+              />
+              <div>
+                <h3
+                  style={{
+                    fontSize: "1.1rem",
+                    fontWeight: "600",
+                    width: "350px",
+                  }}
+                >
+                  {product.name}
+                  <p style={{ fontSize: "1rem", fontWeight: "500" }}>
+                    Tienes{" "}
+                    <span style={{ fontSize: "1rem", fontWeight: "600" }}>
+                      {product.quantity}{" "}
+                    </span>
+                  </p>
+                </h3>
+                <div className="cartProductInfo">
+                  <Button
+                    variant="outlined"
+                    onClick={() => removeById(product.id)}
+                    size="small"
+                    sx={{
+                      minWidth: "60px",
+                      height: "30px",
+                      padding: "10px",
+                    }}
+                  >
+                    Eliminar
+                  </Button>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <p>{product.stock - product.quantity} disponibles</p>
+                    <Link to={`/item/${product.id}`}>
+                      <Button
+                        variant="outlined"
+                        size="small"
+                        sx={{ fontSize: ".6rem", width: "30px" }}
+                      >
+                        Agregar mas productos
+                      </Button>
+                    </Link>
+                  </div>
+                  <p className="cartProductPrice">
+                    {(product.price * product.quantity).toLocaleString(
+                      "es-AR",
+                      {
+                        style: "currency",
+                        currency: "ARS",
+                        minimumFractionDigits: 0,
+                      }
+                    )}{" "}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
-        <div>Resumen de compra</div>
+        <div className="cartSummary">
+          <h5 style={{ alignSelf: "center" }}>Resumen de compra</h5>
+          <p>Productos ({getTotalQuantity()}) </p>
+          <div className="cartSummaryPrice">
+            <p>Total </p>{" "}
+            <p>
+              {totalPrice.toLocaleString("es-AR", {
+                style: "currency",
+                currency: "ARS",
+                minimumFractionDigits: 0,
+              })}
+            </p>
+          </div>
+          <Link to="/checkout" style={{ alignSelf: "center" }}>
+            <Button variant="contained">Continuar con la compra</Button>
+          </Link>
+        </div>
       </div>
 
       {cart.length > 0 ? (
@@ -32,9 +110,7 @@ const Cart = ({
             <Button variant="contained" onClick={botonAtras}>
               Volver
             </Button>
-            <Link to="/checkout">
-              <Button variant="contained">terminar compra</Button>
-            </Link>
+
             <Button variant="contained" onClick={limpiarConAlerta}>
               Limpiar Carrito
             </Button>

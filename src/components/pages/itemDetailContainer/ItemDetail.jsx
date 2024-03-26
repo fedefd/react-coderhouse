@@ -17,7 +17,11 @@ const ItemDetail = ({ item, onAdd, initial, irAlCarrito }) => {
               color="text.secondary"
               className="itemCardPrice"
             >
-              $ {item.price}
+              {item.price.toLocaleString("es-AR", {
+                style: "currency",
+                currency: "ARS",
+                minimumFractionDigits: 0,
+              })}
             </Typography>
             <Typography
               variant="body1"
